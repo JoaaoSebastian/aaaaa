@@ -31,7 +31,7 @@
              double dezxb = 10;
              double dozexb = 12;
              double vistab = 1;
-             double idd = 0;
+             double idde = 0;
              double ecivil = 0;
              double fmaior = 0;
              double uveic = 0;
@@ -44,19 +44,22 @@
              double ads = 0;
              double val = 0;
              double txi = 0;
+             double mense = 0;
+             
+             
             try{
                 if(request.getParameter("enviar")!= null){
                 double casco = Double.parseDouble(request.getParameter("casco"));
-                int idade = Integer.parseInt(request.getParameter("idade"));
-                int estcivil = Integer.parseInt(request.getParameter("estcivil"));
-                int filhosm = Integer.parseInt(request.getParameter("filhosm"));
-                int usovei = Integer.parseInt(request.getParameter("usovei"));
-                int estudante = Integer.parseInt(request.getParameter("estudante"));
-                int garper = Integer.parseInt(request.getParameter("garper"));
-                int gartrab = Integer.parseInt(request.getParameter("gartrab"));
-                int garest = Integer.parseInt(request.getParameter("garest"));
-                double adesao = Double.parseDouble(request.getParameter("adesao"));
-                int assist = Integer.parseInt(request.getParameter("assist"));
+                int idd = Integer.parseInt(request.getParameter("idade"));
+                String estcivil = (request.getParameter("estcivil"));
+                String filhosm = (request.getParameter("filhosm"));
+                String usovei = (request.getParameter("usovei"));
+                String estudante = (request.getParameter("estudante"));
+                String garper = (request.getParameter("garper"));
+                String gartrab = (request.getParameter("gartrab"));
+                String garest = (request.getParameter("garest"));
+                int adesao = Integer.parseInt(request.getParameter("adesao"));
+                String assist = (request.getParameter("assist"));
                 double mensequip = Double.parseDouble(request.getParameter("mensequip"));
                 double txinst = Double.parseDouble(request.getParameter("txinst"));
                 int categoria = Integer.parseInt(request.getParameter("categoria"));
@@ -70,81 +73,82 @@
                 //SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
                 //String dataformatada = formato.format(data);
                 
-                if(idade == 1){
-                    idd = 1.027;
-                }else if(idade == 2){
-                    idd = 1.023;
-                }else if(idade == 3){
-                    idd = 1.012;
-                }else if(idade == 4){
-                    idd = 1.003;
-                }else if(idade == 5){
-                    idd = 1.003;
+                if(idd >= 18 && idd <= 25){
+                    idde = 1.027;
+                }else if(idd >= 26 && idd <= 30){
+                    idde = 1.023;
+                }else if(idd >= 31 && idd <= 40){
+                    idde = 1.012;
+                }else if(idd >= 41 && idd <= 50){
+                    idde = 1.003;
+                }else if(idd > 51){
+                    idde = 1.003;
                 }
                 
-                if(estcivil == 1){
+                if(estcivil.equals("CASADO")){
                     ecivil = 1.001;
-                }else if(estcivil == 2){
+                }else if(estcivil.equals("SOLTEIRO")){
                     ecivil = 1.008;
                 }
                 
-                if(filhosm == 1){
+                if(filhosm.equals("SIM")){
                     fmaior = 1.008;
-                }else if(filhosm == 2){
+                }else if(filhosm.equals("NÃO")){
                     fmaior = 1.001;
                 }
                 
-                if(usovei == 1){
+                if(usovei.equals("LASER")){
                     uveic = 1.0011;
-                }else if(usovei == 2){
+                    
+                }else if(usovei.equals("DIARIO")){
                     uveic = 1.0028;
-                }else if(usovei == 3){
+                }else if(usovei.equals("TRANSPORTE")){
                     uveic = 0.0056;
-                }else if(usovei == 4){
+                }else if(usovei.equals("CARGA")){
                     uveic = 0.0063;
-                }else if(usovei == 5){
+                }else if(usovei.equals("TAXI/UBER")){
                     uveic = 0.0092;
                 }
                 
-                if(estudante == 1){
+                if(estudante.equals("SIM")){
                     estu = 1.009;
-                }else if(estudante == 2){
+                }else if(estudante.equals("NÃO")){
                     estu = 1.001;
                 }
                 
-                if(garper == 1){
+                if(garper.equals("PRÉDIO FECHADA")){
                     gper = 1.001;
-                }else if(garper == 2){
+                }else if(garper.equals("PRÉDIO ABERTA")){
                     gper = 1.012;
-                }else if(garper == 3){
+                }else if(garper.equals("CASA")){
                     gper = 1.017;
-                }else if(garper == 4){
+                }else if(garper.equals("ESTACIONAMENTO")){
                     gper = 1.009;
-                }else if(garper == 5){
+                }else if(garper.equals("S/GARAGEM")){
                     gper = 1.0390;
                 }
                 
-                if(gartrab == 1){
+                if(gartrab.equals("ESTACIONAMENTO")){
                     gtrab = 1.001;
-                }else if(gartrab == 2){
+                }else if(gartrab.equals("S/GARAGEM")){
                     gtrab = 1.014;
-                }else if(gartrab == 3){
+                }else if(gartrab.equals("N/D")){
                     gtrab = 1.009;
                 }
                 
-                if(garest == 1){
+                if(garest.equals("ESTACIONAMENTO")){
                     gest = 1.003;
-                }else if(garest == 2){
+                }else if(garest.equals("S/GARAGEM")){
                     gest = 1.009;
-                }else if(garest == 3){
+                }else if(garest.equals("N/D")){
                     gest = 1.009;
                 }
                 
-                if(assist == 1){
+                if(assist.equals("3 ASSISTÊNCIAS")){
                     ass = 1.0109;
-                }else if(assist == 2){
+                }else if(assist.equals("5 ASSISTÊNCIAS")){
                     ass = 1.0152;
-                }else if(assist == 3){
+                }else if(assist.equals("N/D")){
                     ass = 1.001;
                 }
                 
@@ -157,10 +161,20 @@
                 }else if(categoria == 4){
                     cat = 0.105;
                 }
-                ads = adesao;
+                
+                if(adesao == 1){
+                    ads = 150;
+                }else if(adesao == 2){
+                    ads = 250;
+                }else if(adesao == 3){
+                    ads = 299;
+                }else if(adesao == 4){
+                    ads = 0;
+                }
+                mense = mensequip;
                 mensequip = mensequip * 12;
                 casc = casco;
-                val = ((casc*cat)*idd*ecivil*fmaior*uveic*estu*gper*gtrab*gest*ass) + mensequip + ads ;
+                val = ((casc*cat)*idde*ecivil*fmaior*uveic*estu*gper*gtrab*gest*ass) + mensequip + ads ;
                 txi = txinst;
              vista = val;
              tresx = vista / tresx;
@@ -183,7 +197,8 @@
         %>
         
         <div >
-    <center> <form><table>
+    <center><img src="imgs/Segpainel.jpg" align="center"/>
+        <form><table>
             <tr>
                 <th colspan='7'><center>PROPONENTE</center></th>
             </tr>
@@ -191,7 +206,7 @@
                 <td colspan = '7'></br></td> 
             </tr>
             <tr>       
-            <td colspan='2'><b>CORRETOR*</b><td colspan='2'><b>N°COTAÇÃO*</b></td><td><b>DATA*</b></td><td><b>VALIDADE*</b></td><td><b>COD/FIPE*</b></td>
+                <td colspan='2'><b>CORRETOR*</b></td><td colspan='2'><b>N°COTAÇÃO*</b></td><td><b>DATA*</b></td><td><b>VALIDADE*</b></td><td><b>COD/FIPE*</b></td>
             </tr>
             <tr>
                 <td colspan='2'><input type ="text" name="corretor" value="" size='40'></td> 
@@ -230,72 +245,62 @@
                 <td colspan = '7'></br></td> 
             </tr>
             <tr>
-                <td><b>IDADE*</b></td><td><b>EST/CIVIL*</b></td><td><b>PROFISSÃO*</b></td><td><b>CONDUTOR I*</b></td><td><b>CONDUTOR II</b></td><td colspan='2'><b>TIPO MORADIA*</b></td>
+                <td><b>IDADE*</b></td><td><b>PROFISSÃO*</b></td><td><b>CONDUTOR I*</b></td><td><b>CONDUTOR II</b></td><td colspan='2'><b>TIPO MORADIA*</b></td><td><b>EST/CIVIL*</b></td>
             </tr>
             <tr>
-                <td><input type ="radio" name="idade" value="1" size='20'>DE 18 Á 25 ANOS</td>
-                <td><input type ="radio" name="estcivil" value="1" size='20'>CASADO</td>
+                <td><input type ="text" name="idade" value="" size='20'></td>
                 <td><input type ="text" name="profissao" value="" size='20'></td>
                 <td><input type ="text" name="condt1" value="" size='20'></td>
                 <td><input type ="text" name="condt2" value="" size='20'></td>
                 <td colspan='2'><input type ="text" name="tipomor" value="" size='40'></td>
+                <td><input type ="radio" name="estcivil" value="SOLTEIRO" size='20'>SOLTEIRO</td>
             </tr>
             <tr>
-                <td><input type ="radio" name="idade" value="2" size='20'>DE 16 Á 30 ANOS</td>
-                <td><input type ="radio" name="estcivil" value="0" size='20'>SOLTEIRO</td>
+                <td colspan="6"></td>
+                <td><input type ="radio" name="estcivil" value="CASADO" size='20'>CASADO</td>
             </tr>
-            <tr>
-                <td><input type ="radio" name="idade" value="3" size='20'>DE 31 Á 40 ANOS</td>
-            </tr>
-            <tr>
-                <td><input type ="radio" name="idade" value="4" size='20'>DE 41 Á 50 ANOS</td>
-            </tr>
-            <tr>
-                <td><input type ="radio" name="idade" value="5" size='20'>ACIMA DE 51 ANOS</td>
-            </tr>
-            <tr>
                 <td colspan = '7'></br></td> 
             </tr>
             <tr>
                 <td colspan='2'><b>FILHOS DE 18 Á 25 ANOS*</b></td><td><b>USO VEÍCULO*</b></td><td><b>ESTUDANTE*</b></td><td><b>GAR/PERNOITE*</b></td><td><b>GAR/TRABALHO*</b></td><td><b>GAR/ESTUDO*</b></td>
             </tr>
             <tr>
-                <td colspan='2'><input type ="radio" name="filhosm" value="1" size='20'>SIM</td>
-                <td><input type ="radio" name="usovei" value="1" size='20'>LASER</td>
-                <td><input type ="radio" name="estudante" value="1" size='20'>SIM</td>
-                <td><input type ="radio" name="garper" value="1" size='20'>PRÉDIO/FECHADA</td>
-                <td><input type ="radio" name="gartrab" value="1" size='20'>ESTACIONAMENTO</td>
-                <td><input type ="radio" name="garest" value="1" size='40'>ESTACIONAMENTO</td>
+                <td colspan='2'><input type ="radio" name="filhosm" value="SIM" size='20'>SIM</td>
+                <td><input type ="radio" name="usovei" value="LASER" size='20'>LASER</td>
+                <td><input type ="radio" name="estudante" value="SIM" size='20'>SIM</td>
+                <td><input type ="radio" name="garper" value="PRÉDIO FECHADA" size='20'>PRÉDIO/FECHADA</td>
+                <td><input type ="radio" name="gartrab" value="ESTACIONAMENTO" size='20'>ESTACIONAMENTO</td>
+                <td><input type ="radio" name="garest" value="ESTACIONAMENTO" size='40'>ESTACIONAMENTO</td>
             </tr>
             <tr>
-                <td colspan='2'><input type ="radio" name="filhosm" value="0" size='20'>NÃO</td>
-                <td><input type ="radio" name="usovei" value="2" size='20'>DIÁRIO</td>
-                <td><input type ="radio" name="estudante" value="0" size='20'>NÃO</td>
-                <td><input type ="radio" name="garper" value="2" size='20'>PRÉDIO/ABERTA</td>
-                <td><input type ="radio" name="gartrab" value="2" size='20'>S/GARAGEM</td>
-                <td><input type ="radio" name="garest" value="2" size='40'>S/GARAGEM</td>
-            </tr>
-            <tr>
-                <td colspan='2'></td>
-                <td><input type ="radio" name="usovei" value="3" size='20'>TRANSPORTE</td>
-                <td></td>
-                <td><input type ="radio" name="garper" value="3" size='20'>CASA</td>
-                <td><input type ="radio" name="gartrab" value="3" size='20'>N/D</td>
-                <td><input type ="radio" name="garest" value="3" size='40'>N/D</td>
+                <td colspan='2'><input type ="radio" name="filhosm" value="NÃO" size='20'>NÃO</td>
+                <td><input type ="radio" name="usovei" value="DIÁRIO" size='20'>DIÁRIO</td>
+                <td><input type ="radio" name="estudante" value="NÃO" size='20'>NÃO</td>
+                <td><input type ="radio" name="garper" value="PRÉDIO ABERTA" size='20'>PRÉDIO/ABERTA</td>
+                <td><input type ="radio" name="gartrab" value="S/GARAGEM" size='20'>S/GARAGEM</td>
+                <td><input type ="radio" name="garest" value="S/GARAGEM" size='40'>S/GARAGEM</td>
             </tr>
             <tr>
                 <td colspan='2'></td>
-                <td><input type ="radio" name="usovei" value="4" size='20'>CARGA</td>
+                <td><input type ="radio" name="usovei" value="TRANSPORTE" size='20'>TRANSPORTE</td>
                 <td></td>
-                <td><input type ="radio" name="garper" value="4" size='20'>ESTACIONAMENTO</td>
+                <td><input type ="radio" name="garper" value="CASA" size='20'>CASA</td>
+                <td><input type ="radio" name="gartrab" value="N/D" size='20'>N/D</td>
+                <td><input type ="radio" name="garest" value="N/D" size='40'>N/D</td>
+            </tr>
+            <tr>
+                <td colspan='2'></td>
+                <td><input type ="radio" name="usovei" value="CARGA" size='20'>CARGA</td>
+                <td></td>
+                <td><input type ="radio" name="garper" value="ESTACIONAMENTO" size='20'>ESTACIONAMENTO</td>
                 <td></td>
                 <td></td>
             </tr>
             <tr>
                 <td colspan='2'></td>
-                <td><input type ="radio" name="usovei" value="5" size='20'>TAXI/UBER</td>
+                <td><input type ="radio" name="usovei" value="TAXI/UBER" size='20'>TAXI/UBER</td>
                 <td></td>
-                <td><input type ="radio" name="garper" value="5" size='20'>S/GARAGEM</td>
+                <td><input type ="radio" name="garper" value="S/GARAGEM" size='20'>S/GARAGEM</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -335,21 +340,21 @@
                 <td colspan='2'><input type='number' name='casco' value='' size='40'></td>
                 <td><input type='radio' name='adesao' value='1'>R$150,00</td>
                 <td><input type='radio' name='categoria' value='1'>NÍVEL 1</td>
-                <td><input type='radio' name='assist' value='1'>3 ASSISTÊNCIAS</td>
+                <td><input type='radio' name='assist' value='3 ASSISTÊNCIAS'>3 ASSISTÊNCIAS</td>
                 <td colspan='2'><input type='text' name='opcionais' value='' size='40'></td>
             </tr>
             <tr>
                 <td colspan='2'></td>
                 <td><input type='radio' name='adesao' value='2'>R$250,00</td>
                 <td><input type='radio' name='categoria' value='2'>NÍVEL 2</td>
-                <td><input type='radio' name='assist' value='2'>5 ASSISTÊNCIAS</td>
+                <td><input type='radio' name='assist' value='5 ASSISTÊNCIAS'>5 ASSISTÊNCIAS</td>
                 <td colspan='2'></td>
             </tr>
             <tr>
                 <td colspan='2'></td>
                 <td><input type='radio' name='adesao' value='3'>R$299,00</td>
                 <td><input type='radio' name='categoria' value='3'>NÍVEL 3</td>
-                <td><input type='radio' name='assist' value='3'>N/D</td>
+                <td><input type='radio' name='assist' value='N/D'>N/D</td>
                 <td colspan='2'></td>
             </tr>
             <tr>
@@ -363,13 +368,13 @@
                 <td colspan='7'></br></td>
             </tr>
             <tr>
-                <td colspan='2'><b>MENSALIDADE EQUIP*</b></td><td><b>TAXA INSTALAÇÃO*</b></td><td><b>COBERTURA MÁX*</b></td><td><b>VALIDADE*</b></td><td colspan='2'><b>FRANQUIA*</b></td>
+                <td colspan='2'><b>MENSALIDADE EQUIP*</b></td><td><b>TAXA INSTALAÇÃO*</b></td><td><b>COBERTURA MÁX*</b></td><td><b>TEMPO*</b></td><td colspan='2'><b>FRANQUIA*</b></td>
             </tr>
             <tr>
-                <td colspan='2'><input type='number' name='mensequip' value='' size='40'></td>
+                <td colspan='2'><input type='number' step='0.01' name='mensequip' value='' size='40'></td>
                 <td><input type='number' name='txinst' value='' size='20'></td>
                 <td><input type='string' name='cobermax' value='' size='20'></td>
-                <td><input type='string' name='valid' value='' size='20'></td>
+                <td><input type='string' name='temp' value='' size='20'></td>
                 <td colspan='2'><input type='string' name='franquia' value='' size='40'></td>
             </tr>
             <tr>
@@ -383,14 +388,19 @@
         </div>
         <%if(request.getParameter("enviar") != null){%>
         </br></br>
-    <center><table class="table table-bordered table-hover">
+    <center><img src="imgs/SegIcon.png" align="center"/>
+        <table class="table table-bordered table-hover">
             <tr>
                 <th colspan='7' style='font-size:18px'><center>PROPONENTE</center></th>
             </tr>
             <tr align="center">       
-                <td colspan='2'><b>CORRETOR</b></td><td colspan='2'><b>N°COTAÇÃO</b></td><td><b>DATA</b></td><td><b>VALIDADE</b></td><td><b>COD/FIPE</b></td>
+                <th colspan='2'style='font-size:18px;background-color:#E6E6E6'><center>CORRETOR</center></th>
+                <th colspan='2'style='font-size:18px;background-color:#E6E6E6'><center>N° COTAÇÃO</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>DATA</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>VALIDADE</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>COD FIPE</center></th>
             </tr>
-            <tr>
+            <tr align="center">
                 <td colspan='2'><%=request.getParameter("corretor")%></td> 
                 <td colspan='2'><%=request.getParameter("ncotacao")%></td>         
                 <td><%=request.getParameter("data")%></td>
@@ -398,9 +408,13 @@
                 <td><%=request.getParameter("codfipe")%></td>
             </tr>
             <tr align="center">
-                <td colspan='2'><b>CONTRATANTE</b></td><td colspan='2'><b>ENDEREÇO</b></td><td><b>CIDADE</b></td><td><b>CEP</b></td><td><b>ESTADO</b></td>
+                <th colspan='2'style='font-size:18px;background-color:#E6E6E6'><center>CONTRATANTE</center></th>
+                <th colspan='2'style='font-size:18px;background-color:#E6E6E6'><center>ENDEREÇO</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>CIDADE</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>CEP</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>ESTADO</center></th>
             </tr>
-            <tr>
+            <tr align="center">
                 <td colspan='2'><%=request.getParameter("contratante")%></td> 
                 <td colspan='2'><%=request.getParameter("endereco")%></td>         
                 <td><%=request.getParameter("cidade")%></td>
@@ -408,49 +422,70 @@
                 <td><%=request.getParameter("estado")%></td>
             </tr>
             <tr align="center" >
-                <td colspan='2'><b>CPF/CNPJ</b></td><td colspan='2'><b>E-MAIL</b></td><td><b>CEL</b></td><td><b>TEL(1)</b></td><td><b>TEL(2)</b></td>
+                <th colspan='2'style='font-size:18px;background-color:#E6E6E6'><center>CPF/CNPJ</center></th>
+                <th colspan='2'style='font-size:18px;background-color:#E6E6E6'><center>E-MAIL</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>CELULAR</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>TELEFONE I</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>TELEFONE II</center></th>
             </tr>
-            <tr>
+            <tr align="center">
                 <td colspan='2'><%=request.getParameter("cpf")%></td> 
                 <td colspan='2'><%=request.getParameter("email")%></td>
                 <td><%=request.getParameter("cel")%></td>
                 <td><%=request.getParameter("tel1")%></td>
                 <td><%=request.getParameter("tel2")%></td>
             </tr>
+        </table>
+            <table class="table table-bordered table-hover">
             <tr>
-                <th colspan='7' style='font-size:18px'><center>PERFIL</center></th>
+                <th colspan='6' style='font-size:18px'><center>PERFIL</center></th>
             </tr>
              <tr align="center">
-                 <td><b>IDADE</b></td><td><b>EST/CIVIL</b></td><td><b>PROFISSÃO</b></td><td></td><td><b>CONDUTOR I</b></td><td><b>CONDUTOR II</b></td><td><b>MORADIA</b></td>
+                 <th style='font-size:18px;background-color:#E6E6E6'><center>IDADE</center></th>
+                 <th style='font-size:18px;background-color:#E6E6E6'><center>EST/CIVIL</center></th>
+                 <th style='font-size:18px;background-color:#E6E6E6'><center>PROFISSÃO</center></th>
+                 <th style='font-size:18px;background-color:#E6E6E6'><center>CONDUTOR I</center></th>
+                 <th style='font-size:18px;background-color:#E6E6E6'><center>CONDUTOR II</center></th>
+                 <th style='font-size:18px;background-color:#E6E6E6'><center>MORADIA</center></th>
             </tr>
-            <tr>
-                <td><%=request.getParameter("idade")%></td> 
+            <tr align="center">
+                <td><%=request.getParameter("idade")%> ANOS </td> 
                 <td><%=request.getParameter("estcivil")%></td>
                 <td><%=request.getParameter("profissao")%></td>
-                <td></td>
                 <td><%=request.getParameter("condt1")%></td>
                 <td><%=request.getParameter("condt2")%></td>
                 <td><%=request.getParameter("tipomor")%></td>
             </tr>
             <tr align="center">
-                <td><b>FILHOS DE 18 Á 25 ANOS</b></td><td><b>USO VEÍCULO</b></td><td><b>ESTUDANTE</b></td><td></td><td><b>GARAGEM PERNOITE</b></td><td><b>GARAGEM TRABALHO</b></td><td><b>GARAGEM ESTUDO</b></td>
-            </tr>
-            <tr>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>FILHOS DE 18 Á 25 ANOS</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>USO VEÍCULO</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>ESTUDANTE</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>GARAGEM PERNOITE</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>GARAGEM TRABALHO</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>GARAGEM ESTUDO</center></th>
+                </tr>
+            <tr align="center">
                 <td><%=request.getParameter("filhosm")%></td> 
                 <td><%=request.getParameter("usovei")%></td>
                 <td><%=request.getParameter("estudante")%></td>
-                <td></td>
                 <td><%=request.getParameter("garper")%></td>
                 <td><%=request.getParameter("gartrab")%></td>
                 <td><%=request.getParameter("garest")%></td>
             </tr>
+            </table>
+            <table class="table table-bordered table-hover">
              <tr>
                 <th colspan='7' style='font-size:18px'><center>VEÍCULO</center></th>
             </tr>
             <tr align="center">
-                <td colspan="2"><b>FAB/MODELO</b></td><td><b>COR</b></td><td><b>ANO</b></td><td><b>PLACA</b></td><td><b>RENAVAM</b></td><td><b>CHASSI</b></td>
+                <th colspan='2'style='font-size:18px;background-color:#E6E6E6'><center>FAB/MODELO</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>COR</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>ANO</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>PLACA</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>RENAVAM</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>CHASSI</center></th>
             </tr>
-            <tr>
+            <tr align="center" >
                 <td colspan="2"><%=request.getParameter("fabmodelo")%></td> 
                 <td style = 'background-color:<%=request.getParameter("cor")%>'> </td>
                 <td><%=request.getParameter("ano")%></td>
@@ -458,48 +493,64 @@
                 <td><%=request.getParameter("renavam")%></td>
                 <td><%=request.getParameter("chassi")%></td>
             </tr>
+            </table>
+            <table class="table table-bordered table-hover">
             <tr>
-                <th colspan='7' style='font-size:18px'><center>CONTRATAÇÃO</center></th>
+                <th colspan='6' style='font-size:18px'><center>CONTRATAÇÃO</center></th>
             </tr>
              <tr align="center">
-                 <td><b>ADESÃO</b></td><td><b>EST/CIVIL</b></td><td><b>PROFISSÃO</b></td><td></td><td><b>CONDUTOR I</b></td><td><b>CONDUTOR II</b></td><td><b>MORADIA</b></td>
+                 <th style='font-size:18px;background-color:#E6E6E6'><center>ADESÃO</center></th>
+                 <th style='font-size:18px;background-color:#E6E6E6'><center>FRANQUIA</center></th>
+                 <th style='font-size:18px;background-color:#E6E6E6'><center>ASSISTÊNCIAS</center></th>
+                 <th colspan='2' style='font-size:18px;background-color:#E6E6E6'><center>OPCIONAIS</center></th>
             </tr>
-            <tr>
-                <td><%=request.getParameter("idade")%></td> 
-                <td><%=request.getParameter("estcivil")%></td>
-                <td><%=request.getParameter("profissao")%></td>
-                <td></td>
-                <td><%=request.getParameter("condt1")%></td>
-                <td><%=request.getParameter("condt2")%></td>
-                <td><%=request.getParameter("tipomor")%></td>
+            <tr align="center">
+                <td>R$ <%=new DecimalFormat("0.00").format(ads)%></td> 
+                <td ><%=request.getParameter("franquia")%></td>
+                <td><%=request.getParameter("assist")%></td>
+                <td colspan='2'><%=request.getParameter("opcionais")%></td>
             </tr>
+            <tr align="center">
+                <th style='font-size:18px;background-color:#E6E6E6'><center>MENSALIDADE/EQUIP</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>TAXA/INSTALAÇÃO</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>COBERTURA MÁXIMA</center></th>
+                <th colspan='2' style='font-size:18px;background-color:#E6E6E6'><center>TEMPO</center></th>
+            </tr>
+            <tr align="center">
+                <td>R$ <%=new DecimalFormat("0.00").format(mense)%></td> 
+                <td>R$ <%=new DecimalFormat("0.00").format(txi)%></td>
+                <td><%=request.getParameter("cobermax")%></td>
+                <td colspan='2'><%=request.getParameter("temp")%></td>
+            </tr>
+            </table>
+            <table class="table table-bordered table-hover">
             <tr>
-            <th style='font-size:18px'><center><b>PAGAMENTO</b></center></th>
-            <th style='font-size:18px'><center><b>VALOR CASCO</b></center></th>
-            <th style='font-size:18px'><center><b>Á VISTA</b></center></th>
-            <th style='font-size:18px'><center><b>3x S/ JUROS</b></center></th>
-            <th style='font-size:18px'><center><b>6x </b></center></th>
-            <th style='font-size:18px'><center><b>10x </b></center></th>
-            <th style='font-size:18px'><center><b>12x </b></center></th>
+                <th colspan='7' style='font-size:18px'><center>PAGAMENTO</center></th>
+            </tr>
+            <tr align="center">
+                <th colspan='2'style='background-color:#E6E6E6'></th>
+            <th style='font-size:18px;background-color:#E6E6E6'><center><b>Á VISTA</b></center></th>
+            <th style='font-size:18px;background-color:#E6E6E6'><center><b>3x S/ JUROS</b></center></th>
+            <th style='font-size:18px;background-color:#E6E6E6'><center><b>6x </b></center></th>
+            <th style='font-size:18px;background-color:#E6E6E6'><center><b>10x </b></center></th>
+            <th style='font-size:18px;background-color:#E6E6E6'><center><b>12x </b></center></th>
         </tr>
-        <tr>
-            <td ><center>CARTÃO</center></td>
-            <td ><center>R$ <%=new DecimalFormat("0,000.00").format(casc)%></center></td>
-            <td ><center>R$ <%=new DecimalFormat("0,000.00").format(vista)%> + R$ <%=new DecimalFormat("0.00").format(txi)%></center></td>
-            <td ><center>R$ <%=new DecimalFormat("0.00").format(tresx)%> + R$ <%=new DecimalFormat("0.00").format(txi)%></center></td>
-            <td ><center>R$ <%=new DecimalFormat("0.00").format(seisx)%> + R$ <%=new DecimalFormat("0.00").format(txi)%></center></td>
-            <td ><center>R$ <%=new DecimalFormat("0.00").format(dezx)%> + R$ <%=new DecimalFormat("0.00").format(txi)%></center></td>
-            <td ><center>R$ <%=new DecimalFormat("0.00").format(dozex)%> + R$ <%=new DecimalFormat("0.00").format(txi)%></center></td>
+        <tr align="center">
+            <th colspan='2'style='font-size:18px;background-color:#E6E6E6'><center>CARTÃO</center></th>
+            <td ><center>R$ <%=new DecimalFormat("0,000.00").format(vista)%> + R$ TAXA/INSTALAÇÃO</center></td>
+            <td ><center>R$ <%=new DecimalFormat("0.00").format(tresx)%> + TAXA/INSTALAÇÃO</center></td>
+            <td ><center>R$ <%=new DecimalFormat("0.00").format(seisx)%> + TAXA/INSTALAÇÃO</center></td>
+            <td ><center>R$ <%=new DecimalFormat("0.00").format(dezx)%> + TAXA/INSTALAÇÃO</center></td>
+            <td ><center>R$ <%=new DecimalFormat("0.00").format(dozex)%> + TAXA/INSTALAÇÃO</center></td>
         </tr>
         
-        <tr>
-            <td ><center>BOLETO</center></td>
-            <td ><center>R$ <%=new DecimalFormat("0,000.00").format(casc)%></center></td>
-            <td ><center>R$ <%=new DecimalFormat("0,000.00").format(vistab)%> + R$ <%=new DecimalFormat("0.00").format(txi)%></center></td>
-            <td ><center>R$ <%=new DecimalFormat("0.00").format(tresxb)%> + R$ <%=new DecimalFormat("0.00").format(txi)%></center></td>
-            <td ><center>R$ <%=new DecimalFormat("0.00").format(seisxb)%> + R$ <%=new DecimalFormat("0.00").format(txi)%></center></td>
-            <td ><center>R$ <%=new DecimalFormat("0.00").format(dezxb)%> + R$ <%=new DecimalFormat("0.00").format(txi)%></center></td>
-            <td ><center>R$ <%=new DecimalFormat("0.00").format(dozexb)%> + R$ <%=new DecimalFormat("0.00").format(txi)%></center></td>
+        <tr align="center">
+            <th colspan='2'style='font-size:18px;background-color:#E6E6E6'><center>BOLETO</center></th>
+            <td ><center>R$ <%=new DecimalFormat("0,000.00").format(vistab)%> + TAXA/INSTALAÇÃO</center></td>
+            <td ><center>R$ <%=new DecimalFormat("0.00").format(tresxb)%> + TAXA/INSTALAÇÃO</center></td>
+            <td ><center>R$ <%=new DecimalFormat("0.00").format(seisxb)%> + TAXA/INSTALAÇÃO</center></td>
+            <td ><center>R$ <%=new DecimalFormat("0.00").format(dezxb)%> + TAXA/INSTALAÇÃO</center></td>
+            <td ><center>R$ <%=new DecimalFormat("0.00").format(dozexb)%> + TAXA/INSTALAÇÃO</center></td>
         </tr>
         <tr>
         </table></center>    
