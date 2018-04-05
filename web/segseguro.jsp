@@ -21,7 +21,7 @@
     <body>
         <% 
              double casc = 0;
-             double vista = 1;
+             double vista = 0;
              double tresx = 3;
              double seisx = 6;
              double dezx = 10;
@@ -30,7 +30,7 @@
              double seisxb = 6;
              double dezxb = 10;
              double dozexb = 12;
-             double vistab = 1;
+             double vistab = 0;
              double idde = 0;
              double ecivil = 0;
              double fmaior = 0;
@@ -45,6 +45,7 @@
              double val = 0;
              double txi = 0;
              double mense = 0;
+             double subt = 0;
              
              
             try{
@@ -93,13 +94,13 @@
                 
                 if(filhosm.equals("SIM")){
                     fmaior = 1.008;
-                }else if(filhosm.equals("NÃO")){
+                }else if(filhosm.equals("NAO")){
                     fmaior = 1.001;
                 }
                 
                 if(usovei.equals("LASER")){
                     uveic = 1.0011;  
-                }else if(usovei.equals("DIÁRIO")){
+                }else if(usovei.equals("DIARIO")){
                     uveic = 1.0028;
                 }else if(usovei.equals("TRANSPORTE")){
                     uveic = 1.0056;
@@ -111,13 +112,13 @@
                 
                 if(estudante.equals("SIM")){
                     estu = 1.009;
-                }else if(estudante.equals("NÃO")){
+                }else if(estudante.equals("NAO")){
                     estu = 1.001;
                 }
                 
-                if(garper.equals("PRÉDIO FECHADA")){
+                if(garper.equals("PREDIO FECHADA")){
                     gper = 1.001;
-                }else if(garper.equals("PRÉDIO ABERTA")){
+                }else if(garper.equals("PREDIO ABERTA")){
                     gper = 1.012;
                 }else if(garper.equals("CASA")){
                     gper = 1.017;
@@ -143,9 +144,9 @@
                     gest = 1.009;
                 }
                 
-                if(assist.equals("3 ASSISTÊNCIAS")){
+                if(assist.equals("3 ASSISTENCIAS")){
                     ass = 1.0109;
-                }else if(assist.equals("5 ASSISTÊNCIAS")){
+                }else if(assist.equals("5 ASSISTENCIAS")){
                     ass = 1.0152;
                 }else if(assist.equals("N/D")){
                     ass = 1.001;
@@ -173,14 +174,14 @@
                 mense = mensequip;
                 mensequip = mensequip * 12;
                 casc = casco;
-                val = ((casc*cat)*idde*ecivil*fmaior*uveic*estu*gper*gtrab*gest*ass) + mensequip + ads ;
+                subt = casc * cat;
+                vista = (subt*idde*ecivil*fmaior*uveic*estu*gper*gtrab*gest*ass) + mensequip + ads ;
                 txi = txinst;
-             vista = val;
              tresx = vista / tresx;
              seisx = (vista / seisx)* 1.0128;
              dezx = (vista / dezx) * 1.0249;
              dozex = (vista / dozex) * 1.0659;
-             vistab = val + 238;
+             vistab = vista + 238;
              tresxb = vistab / tresxb;
              seisxb = (vistab / seisxb) * 1.0128;
              dezxb = (vistab / dezxb) * 1.0249;
@@ -197,7 +198,7 @@
         
         <div >
     <center><img src="imgs/Segpainel.jpg" align="center"/>
-        <form><table>
+        <form method="POST"><table>
             <tr>
                 <th colspan='7'><center>PROPONENTE</center></th>
             </tr>
@@ -267,15 +268,15 @@
                 <td colspan='2'><input type ="radio" name="filhosm" value="SIM" size='20'>SIM</td>
                 <td><input type ="radio" name="usovei" value="LASER" size='20'>LASER</td>
                 <td><input type ="radio" name="estudante" value="SIM" size='20'>SIM</td>
-                <td><input type ="radio" name="garper" value="PRÉDIO FECHADA" size='20'>PRÉDIO/FECHADA</td>
+                <td><input type ="radio" name="garper" value="PREDIO FECHADA" size='20'>PRÉDIO/FECHADA</td>
                 <td><input type ="radio" name="gartrab" value="ESTACIONAMENTO" size='20'>ESTACIONAMENTO</td>
                 <td><input type ="radio" name="garest" value="ESTACIONAMENTO" size='40'>ESTACIONAMENTO</td>
             </tr>
             <tr>
-                <td colspan='2'><input type ="radio" name="filhosm" value="NÃO" size='20'>NÃO</td>
-                <td><input type ="radio" name="usovei" value="DIÁRIO" size='20'>DIÁRIO</td>
-                <td><input type ="radio" name="estudante" value="NÃO" size='20'>NÃO</td>
-                <td><input type ="radio" name="garper" value="PRÉDIO ABERTA" size='20'>PRÉDIO/ABERTA</td>
+                <td colspan='2'><input type ="radio" name="filhosm" value="NAO" size='20'>NÃO</td>
+                <td><input type ="radio" name="usovei" value="DIARIO" size='20'>DIÁRIO</td>
+                <td><input type ="radio" name="estudante" value="NAO" size='20'>NÃO</td>
+                <td><input type ="radio" name="garper" value="PREDIO ABERTA" size='20'>PRÉDIO/ABERTA</td>
                 <td><input type ="radio" name="gartrab" value="S/GARAGEM" size='20'>S/GARAGEM</td>
                 <td><input type ="radio" name="garest" value="S/GARAGEM" size='40'>S/GARAGEM</td>
             </tr>
@@ -333,20 +334,20 @@
                 <td colspan = '7'></br></td> 
             </tr>
             <tr>
-                <td colspan='2'><b>CASCO*</b></td><td><b>ADESÃO*</b></td><td><b>CATEGORIA*</b></td><td><b>ASSISTÊNCIAS*/<b></td><td colspan='2'><b>OPCIONAIS</b></td>
+                <td colspan='2'><b>CASCO*</b></td><td><b>ADESÃO*</b></td><td><b>CATEGORIA*</b></td><td><b>ASSISTÊNCIAS*<b></td><td colspan='2'><b>OPCIONAIS</b></td>
             </tr>
             <tr>
                 <td colspan='2'><input type='number' name='casco' value='' size='40'></td>
                 <td><input type='radio' name='adesao' value='1'>R$150,00</td>
                 <td><input type='radio' name='categoria' value='1'>NÍVEL 1</td>
-                <td><input type='radio' name='assist' value='3 ASSISTÊNCIAS'>3 ASSISTÊNCIAS</td>
+                <td><input type='radio' name='assist' value='3 ASSISTENCIAS'>3 ASSISTÊNCIAS</td>
                 <td colspan='2'><input type='text' name='opcionais' value='' size='40'></td>
             </tr>
             <tr>
                 <td colspan='2'></td>
                 <td><input type='radio' name='adesao' value='2'>R$250,00</td>
                 <td><input type='radio' name='categoria' value='2'>NÍVEL 2</td>
-                <td><input type='radio' name='assist' value='5 ASSISTÊNCIAS'>5 ASSISTÊNCIAS</td>
+                <td><input type='radio' name='assist' value='5 ASSISTENCIAS'>5 ASSISTÊNCIAS</td>
                 <td colspan='2'></td>
             </tr>
             <tr>
