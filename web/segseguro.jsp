@@ -98,16 +98,15 @@
                 }
                 
                 if(usovei.equals("LASER")){
-                    uveic = 1.0011;
-                    
-                }else if(usovei.equals("DIARIO")){
+                    uveic = 1.0011;  
+                }else if(usovei.equals("DIÁRIO")){
                     uveic = 1.0028;
                 }else if(usovei.equals("TRANSPORTE")){
-                    uveic = 0.0056;
+                    uveic = 1.0056;
                 }else if(usovei.equals("CARGA")){
-                    uveic = 0.0063;
+                    uveic = 1.0063;
                 }else if(usovei.equals("TAXI/UBER")){
-                    uveic = 0.0092;
+                    uveic = 1.0092;
                 }
                 
                 if(estudante.equals("SIM")){
@@ -153,13 +152,13 @@
                 }
                 
                 if(categoria == 1){
-                    cat = 0.06;
+                    cat = 0.019;
                 }else if(categoria == 2){
-                    cat = 0.075;
+                    cat = 0.025;
                 }else if(categoria == 3){
-                    cat = 0.09;
+                    cat = 0.038;
                 }else if(categoria == 4){
-                    cat = 0.105;
+                    cat = 0.0505;
                 }
                 
                 if(adesao == 1){
@@ -180,18 +179,18 @@
              tresx = vista / tresx;
              seisx = (vista / seisx)* 1.0128;
              dezx = (vista / dezx) * 1.0249;
-             dozex = (vista / dozex) * 1.0309;
+             dozex = (vista / dozex) * 1.0659;
              vistab = val + 238;
              tresxb = vistab / tresxb;
              seisxb = (vistab / seisxb) * 1.0128;
              dezxb = (vistab / dezxb) * 1.0249;
-             dozexb = (vistab / dozexb) * 1.0309;
+             dozexb = (vistab / dozexb) * 1.0659;
              
              
                 }
                 }
             catch(Exception ex){
-                out.println("<span style='color:red;'>Você não preencheu as opções necessárias. Tente novamente: </span><br>");
+                out.println("<b><center><span style='color:red;font-size:30px;'>Você não preencheu as opções necessárias. Tente novamente. </span></b></center><br>");
                
             }
         %>
@@ -486,7 +485,7 @@
                 <th style='font-size:18px;background-color:#E6E6E6'><center>CHASSI</center></th>
             </tr>
             <tr align="center" >
-                <td colspan="2"><%=request.getParameter("fabmodelo")%></td> 
+                <td colspan="2"><%=request.getParameter("fabmodel")%></td> 
                 <td style = 'background-color:<%=request.getParameter("cor")%>'> </td>
                 <td><%=request.getParameter("ano")%></td>
                 <td><%=request.getParameter("placa")%></td>
