@@ -173,14 +173,14 @@
                 vista = (subt*idde*ecivil*fmaior*uveic*estu*gper*gtrab*gest*ass) + mensequip + ads ;
                 txi = txinst;
              tresx = vista / tresx;
-             seisx = (vista / seisx)* 1.0128;
-             dezx = (vista / dezx) * 1.0249;
-             dozex = (vista / dozex) * 1.0659;
+             seisx = (vista / seisx)* 1.0765;
+             dezx = (vista / dezx) * 1.0871;
+             dozex = (vista / dozex) * 1.1032;
              vistab = vista + 238;
              tresxb = vistab / tresxb;
-             seisxb = (vistab / seisxb) * 1.0128;
-             dezxb = (vistab / dezxb) * 1.0249;
-             dozexb = (vistab / dozexb) * 1.0659;
+             seisxb = (vistab / seisxb) * 1.0765;
+             dezxb = (vistab / dezxb) * 1.0871;
+             dozexb = (vistab / dozexb) * 1.1032;
              
              
                 }
