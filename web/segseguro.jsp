@@ -42,7 +42,6 @@
              double ass = 0;
              double cat = 0;
              double ads = 0;
-             double val = 0;
              double txi = 0;
              double mense = 0;
              double subt = 0;
@@ -65,10 +64,6 @@
                 double txinst = Double.parseDouble(request.getParameter("txinst"));
                 int categoria = Integer.parseInt(request.getParameter("categoria"));
                 
-                String data = request.getParameter("data");
-                String[] s = data.split("-");
-                String novaData = s[2] + "/" + s[1] + "/" + s[0];
-                System.out.println(data);
                 
                 //Date data = rs.getDate("Data");
                 //SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
