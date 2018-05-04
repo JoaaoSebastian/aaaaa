@@ -318,7 +318,7 @@
             </tr>
             <tr>
                 <td colspan='2'><input type='text' name='fabmodel' value='' size='40'></td>
-                <td><input type='color' name='cor' value='' size=''></td>
+                <td><input type='text' name='cor' value='' size='20'></td>
                 <td><input type='text' name='ano' value='' size='20'></td>
                 <td><input type='text' name='placa' value='' size='20'></td>
                 <td><input type='text' name='renavam' value='' size='20'></td>
@@ -487,7 +487,7 @@
             </tr>
             <tr align="center" >
                 <td colspan="2"><%=request.getParameter("fabmodel")%></td> 
-                <td style = 'background-color:<%=request.getParameter("cor")%>'> </td>
+                <td><%=request.getParameter("cor")%></td>
                 <td><%=request.getParameter("ano")%></td>
                 <td><%=request.getParameter("placa")%></td>
                 <td><%=request.getParameter("renavam")%></td>
