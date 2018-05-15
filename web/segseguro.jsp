@@ -266,13 +266,14 @@
                 <td colspan = '5'></br></td> 
             </tr>
             <tr>
-                <td colspan='2'><b>FAB/MODELO*</b></td><td><b>COR</b></td><td><b>ANO*</b></td><td><b>PLACA*</b></td>
+                <td><b>FAB/MODELO*</b></td><td><b>COR</b></td><td><b>ANO*</b></td><td><b>PLACA*</b></td><td><b>COD/FIPE*</b></td>
             </tr>
             <tr>
-                <td colspan='2'><input type='text' name='fabmodel' value='' size='40'></td>
+                <td><input type='text' name='fabmodel' value='' size='20'></td>
                 <td><input type='text' name='cor' value='' size='20'></td>
                 <td><input type='text' name='ano' value='' size='20'></td>
                 <td><input type='text' name='placa' value='' size='20'></td>
+                <td><input type='text' name='codfipe' value='' size='20'></td>
             </tr>
             <tr>
                 <td colspan = '5'></br></td> 
@@ -321,10 +322,16 @@
                 <td><b>MENSALIDADE EQUIP*</b></td><td><b>TAXA INSTALAÇÃO*</b></td><td><b>COBERTURA MÁX*</b></td><td colspan='2'><b>FRANQUIA*</b></td>
             </tr>
             <tr>
-                <td><input type='number' step='0.01' name='mensequip' value='' size='40'></td>
+                <td><input type='number' step='0.01' name='mensequip' value='' size='20'></td>
                 <td><input type='number' name='txinst' value='' size='20'></td>
                 <td><input type='string' name='cobermax' value='' size='20'></td>
                 <td colspan='2'><input type='string' name='franquia' value='' size='40'></td>
+            </tr>
+            <tr>
+                <td colspan='5'></br></td>
+            </tr>
+            <tr>
+                <td colspan='5'><center><b>DATA DE EXPIRAÇÃO:</b><input type='text' name='dataexp' value=''></center></td>
             </tr>
             <tr>
                 <td colspan='5'></br></td>
@@ -343,16 +350,18 @@
                 <th colspan='5' style='font-size:18px'><center>VEÍCULO</center></th>
             </tr>
             <tr align="center">
-                <th colspan='2'style='font-size:18px;background-color:#E6E6E6'><center>FAB/MODELO</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>FAB/MODELO</center></th>
                 <th style='font-size:18px;background-color:#E6E6E6'><center>COR</center></th>
                 <th style='font-size:18px;background-color:#E6E6E6'><center>ANO</center></th>
                 <th style='font-size:18px;background-color:#E6E6E6'><center>PLACA</center></th>
+                <th style='font-size:18px;background-color:#E6E6E6'><center>COD/FIPE</center></th>
             </tr>
             <tr align="center" >
-                <td colspan="2"><%=request.getParameter("fabmodel")%></td> 
+                <td><%=request.getParameter("fabmodel")%></td> 
                 <td><%=request.getParameter("cor")%></td>
                 <td><%=request.getParameter("ano")%></td>
                 <td><%=request.getParameter("placa")%></td>
+                <td><%=request.getParameter("codfipe")%></td> 
             </tr>
             </table>
             <table class="table table-bordered table-hover">
@@ -411,6 +420,9 @@
         </tr>
         <tr>
             <th colspan ="7" style='font-size:18px;background-color:#E6E6E6'><center>CORRETOR(A): <%=request.getParameter("corretor")%></center></th>
+        </tr>
+            <tr>
+            <th colspan ="7" style='font-size:18px;background-color:#E6E6E6'><center> VALIDADE : <%=request.getParameter("dataexp")%></center></th>
         </tr></table></center>
     <%}%>
     </body>
